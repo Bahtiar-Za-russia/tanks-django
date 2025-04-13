@@ -1,0 +1,141 @@
+.circles{
+
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    background: rgba(220, 220, 220, 0.5);
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+.nav-link{
+    font-size: 20px;
+    height: 25%;
+    animation: onUnhover 0.3s forwards;
+}
+.nav-link:hover{
+    animation: onHover 0.3s forwards;
+}
+header{
+    background-repeat: repeat-x;
+    background-size: cover;
+    box-shadow: 0px 5px 10px rgba(148, 120, 120, 0.507);
+    color: black;
+    font-family: 'Arial', 'Verdana', sans-serif;
+}
+body{
+    background-image: url('https://staticfiles.warthunder.com/upload/image/!2024/12/upd/24_12_12_update_2.43/art_int/news_storm_warning_pzh_2000_5f0ca27a2ddaf97dabf8615bf7a365da.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:rgba(255, 255, 255, 0.92);
+
+}
+main{
+    margin-top:5%;
+}      
+.title{
+    margin-bottom: 15%;
+}
+.block{
+    margin-bottom: 5%;
+    justify-content: start;
+}
+.block img{
+    height: 175px;
+    width: 175px;
+    margin-right: 5%;
+}
+.title-header{
+    font-size: 32px;
+    text-align: center;
+}
+.title-text{
+    font-size: 20px;
+    text-align: center;
+}
+@keyframes onHover{
+    0%{
+        height: 25%;
+    }
+    100%{
+        height: 100%;
+    }
+}
+@keyframes onUnhover{
+    0%{
+        height: 100%;
+    }
+    100%{
+        height: 25%;
+    }
+}
+
+#carousel {
+    width: 50vw;
+    height: 50vh;
+    margin-left: 25%;
+}
+
+.slide-item {
+    display: flex;
+    height: 50vh;
+    width: 50vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.text {
+    margin-left: 50%;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+#first-slide {
+    background-image: url(https://wiki-ru.warthunder.com/images/1f479b1554b96b71d0608990596bc310.jpg);
+}
+
+#twelwe-slide {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2008_Moscow_Victory_Day_Parade_-_9K22_Tunguska.jpg/274px-2008_Moscow_Victory_Day_Parade_-_9K22_Tunguska.jpg);
+}
+
+.btn{
+    font-size: 200%;
+    
+}
+
+.btn-link{
+    font-size: 200%;
+    
+}
+
+.container {
+    text-align: center;
+}
+
+.product-image {
+    width: 300px;
+    height: auto;
+}
+
+select {
+    padding: 10px;
+    margin-top: 10px;
+}
+#buy{
+    color: white;
+}
