@@ -46,16 +46,53 @@ input[type="password"] {
     background-color: #ecf0f1;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
+/* Унифицированные стили для кнопок и ссылок-кнопок */
+/* Общие стили для всех кнопок и кнопок-ссылок */
+/* Общие стили для всех кнопок */
+.btn {
+    padding: 12px 78px;
     background-color: #e74c3c;
     color: white;
-    border-radius: 5px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
+.btn:hover {
     background-color: #c0392b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Специфичный стиль для кнопки формы */
+button[type="submit"] {
+    margin-top: 10px;
+}
+
+.nav-link {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

@@ -24,6 +24,7 @@ img{
     font-size: 20px;
     height: 25%;
     animation: onUnhover 0.3s forwards;
+
 }
 .nav-link:hover{
     animation: onHover 0.3s forwards;

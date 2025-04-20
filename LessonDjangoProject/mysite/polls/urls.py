@@ -17,4 +17,7 @@ urlpatterns = [
     path('onas/', views.onas, name='onas'),
     path('sponsor/', views.sponsor, name='sponsor'),
     path('Seller/', views.Seller, name='Seller'),
+    path('ss/', views.ss, name='ss'),
+    path('register/', views.register, name='register'),
+    path('voity/', views.voity, name='voity'),
 ]

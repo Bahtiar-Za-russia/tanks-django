@@ -45,3 +45,14 @@ def sponsor(request):
 
 def Seller(request):
     return render(request, 'polls/Seller.html')
+
+def ss(request):
+    return render(request, 'polls/ss.html')
+
+def register(request):
+    return render(request, 'polls/register.html')
+
+def voity(request):
+    return render(request, 'polls/voity.html')
+
+
