@@ -1,0 +1,24 @@
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'styler.css' %}">
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Вход</h2>
+        <form action="{% url 'vhod' %}" method="post">
+            {% csrf_token %}
+                <label for="login">Логин</label>
+                <input type="text" id="login" name="login" required />
+
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+
+            <button type="submit"> <a href="{% url 'home' %}"></a>Войти </button>
+        </form>
+    </div>
+</body>
+</html>

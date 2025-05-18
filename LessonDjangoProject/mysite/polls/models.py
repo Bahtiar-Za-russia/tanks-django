@@ -1,14 +1,18 @@
-from django.db import models
-from django.contrib import admin
 
-class TestUser(models.Model):
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
+
+# class Client(AbstractUser):
+#     USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = []
+
+    # class Meta:
+    #     db_table = 'clients'
 
 class Client(models.Model):
-    user_login = models.CharField(max_length=70)
-    user_passwold = models.CharField(max_length=20)
-    user_wallet = models.CharField(max_length=50)
+    login = models.CharField(max_length=200, default="")
+    password = models.CharField(max_length=200, default="")
 
 class nation(models.Model):
     nation_name = models.CharField(max_length=70)
