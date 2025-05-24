@@ -18,7 +18,8 @@
             <div class="col-3 navbar">
                 <a class="nav-link" href="{% url 'polls:onas' %}">О нас</a>
                 <a class="nav-link" href="{% url 'polls:sponsor' %}">Спонсоры</a>
-                <a class="nav-link" href="{% url 'polls:register' %}">Заказать Танк</a>
+                <a class="nav-link" href="{% url 'polls:register' %}">Зарегистрироватся</a>
+                <a class="nav-link" href="{% url 'polls:login' %}">Войти</a>
             </div>
         </div>
     </header>
@@ -46,9 +47,9 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="block d-flex">
-                            <img class="nav" href="Seller.html" src="https://storage.yandexcloud.net/moskvichmag/uploads/2022/06/flag1.png"alt="icon">
+                            <img class="nav" href="{% url 'polls:seller' %}" src="https://storage.yandexcloud.net/moskvichmag/uploads/2022/06/flag1.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="Seller.html" role="button">СССР и России</a>
+                                <a class="btn btn-link" href="{% url 'polls:seller' %}" role="button">СССР и России</a>
                                 <p class="block-text">Танки СССР или России</p>
                             </div>
                         </div>
@@ -57,7 +58,7 @@
                         <div class="block d-flex">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/250px-Flag_of_the_United_States.svg.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="USA.html" role="button">USA</a>
+                                <a class="btn btn-link" href="{% url 'polls:usa' %}" role="button">USA</a>
                                 <p class="block-text">Танки Омерики</p>
                             </div>
                         </div>

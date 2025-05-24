@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-
-# app_name = 'polls'
+app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -11,4 +10,9 @@ urlpatterns = [
     path('ss/', views.ss, name='ss'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
+    path('USA.html', views.usa, name='usa'),
+    path('WB.html', views.wb, name='wb'),
+    path('GER.html', views.ger, name='ger'),
+    path('FRC.html', views.frc, name='frc'),
+    path('CH.html', views.ch, name='ch'),
 ]
