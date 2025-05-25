@@ -15,4 +15,5 @@ urlpatterns = [
     path('GER.html', views.ger, name='ger'),
     path('FRC.html', views.frc, name='frc'),
     path('CH.html', views.ch, name='ch'),
+    path('pokupka.html', views.pokupka, name='pokupka'),
 ]

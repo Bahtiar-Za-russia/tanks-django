@@ -1,0 +1,168 @@
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Покупка танков - Танковая Биржа</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToo3dRuPHHeTJclq4P8eXPgefWgwIXNC_dkQ&s" alt="404 Not Found">
+                <h1>Танковая Биржа</h1>
+            </div>
+            <div class="col-1 navbar">
+                <a class="nav-link" href="{% url 'polls:index' %}">Назад</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 purchase-container">
+                    <h2 class="selection-title">Выберите модель танка для покупки</h2>
+
+                    <!-- Выбор нации -->
+                    <select class="form-select form-select-lg" id="nationSelect">
+                        <option selected disabled>Выберите страну</option>
+                        <option value="ussr">СССР/Россия</option>
+                        <option value="usa">США</option>
+                        <option value="uk">Великобритания</option>
+                        <option value="germany">Германия</option>
+                        <option value="france">Франция</option>
+                        <option value="china">Китай</option>
+                    </select>
+
+                    <!-- Флаг нации -->
+                    <img id="nationFlag" class="nation-flag" src="" alt="Флаг страны">
+
+                    <!-- Выбор танка (появится после выбора нации) -->
+                    <select class="form-select form-select-lg" id="tankSelect" style="display: none;">
+                        <option selected disabled>Выберите танк</option>
+                        <!-- Опции будут добавлены динамически -->
+                    </select>
+
+                    <!-- Информация о танке -->
+                    <div id="tankInfo" class="tank-info">
+                        <h4 id="tankName"></h4>
+                        <p id="tankDescription"></p>
+                        <p id="tankPrice" class="fw-bold"></p>
+                        <!-- Изображение танка (появится после выбора) -->
+                        <img id="tankImage" class="tank-image" src="" alt="Выбранный танк">
+                    </div>
+
+                    <!-- Кнопка покупки -->
+                    <button id="buyButton" class="btn btn-primary btn-purchase">Купить</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Данные о флагах стран
+            const flagsData = {
+                'ussr': 'https://storage.yandexcloud.net/moskvichmag/uploads/2022/06/flag1.png',
+                'usa': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/250px-Flag_of_the_United_States.svg.png',
+                'uk': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/250px-Flag_of_the_United_Kingdom_%283-5%29.svg.png',
+                'germany': 'https://kupit-flag.ru/upload/iblock/6c6/6c6d5997e59a4ecf3c4d5de2ef858cc5.png',
+                'france': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/200px-Ensign_of_France.svg.png',
+                'china': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/800px-Flag_of_the_People%27s_Republic_of_China.svg.png'
+            };
+
+            // Данные о танках по странам
+            const tanksData = {
+                'ussr': [
+                    {name: 'Т-80УМ2', description: 'Основной обт России', price: '1 200 000 руб.', image:'https://wiki-ru.warthunder.com/images/1f479b1554b96b71d0608990596bc310.jpg'},
+                    {name: 'Т-72Б3', description: 'Основной обт России', price: '1 200 000 руб.', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpTTkviSrtQpeMreDEz9Qu2Dg3IuQdjtIMag&s'},
+                    {name: 'Т-90М', description: 'Основной боевой танк третьего поколения', price: '120 000 000 руб.', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/T-90M.jpg/274px-T-90M.jpg'},
+                    {name: 'Т80БВМ', description: 'Новейший российский основной боевой танк', price: '350 000 000 руб.', image: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/T-80BVM_%282%29.jpg'},
+                    {name: 'Т80У', description: 'Новейший российский основной боевой танк', price: '350 000 000 руб.', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSyq1b9UzaOG9WggOb8EfMuRjNfDE52JBhBQ&s'},
+                    {name: '2С6 Тунгуска', description: 'Новейший российский основной боевой танк', price: '350 000 000 руб.', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2008_Moscow_Victory_Day_Parade_-_9K22_Tunguska.jpg/274px-2008_Moscow_Victory_Day_Parade_-_9K22_Tunguska.jpg'},
+                ],
+                'usa': [
+                    {name: 'М1А2 Абрамс V3 ', description: 'Основной боевой танк США', price: '$6 000 000', image: 'https://ic.pics.livejournal.com/bmpd/38024980/2463559/2463559_original.jpg'},
+                    {name: 'M2 брэдли', description: 'Средний танк периода Второй мировой войны', price: '$250 000', image: 'https://upload.wikimedia.org/wikipedia/commons/b/b4/M2A3_main_gun_elevation.jpg'},
+                    {name: 'М109Г', description: 'Основной боевой танк второго поколения', price: '$1 500 000', image: 'https://war-book.ru/wp-content/uploads/2019/02/00081650.jpg'}
+                ],
+                'uk': [
+                    {name: 'Challenger 2', description: 'Основной боевой танк Великобритании', price: '£4 200 000', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Challenger_2_Main_Battle_Tank_patrolling_outside_Basra.jpg/320px-Challenger_2_Main_Battle_Tank_patrolling_outside_Basra.jpg'},
+                    {name: 'Centurion', description: 'Британский средний танк послевоенного периода', price: '£350 000', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Centurion_Mk5_1.jpg/320px-Centurion_Mk5_1.jpg'},
+                    {name: 'Cromwell', description: 'Средний крейсерский танк периода Второй мировой войны', price: '£280 000', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Cromwell_IV_tank_%28Arromanches%29.jpg/320px-Cromwell_IV_tank_%28Arromanches%29.jpg'}
+                ],
+                'germany': [
+                    {name: 'Leopard 2', description: 'Немецкий основной боевой танк', price: '5 700 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Leopard_2_A5_der_Bundeswehr.jpg/320px-Leopard_2_A5_der_Bundeswehr.jpg'},
+                    {name: 'Tiger I', description: 'Тяжёлый танк нацистской Германии', price: '1 800 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tiger_131_%285105520329%29.jpg/320px-Tiger_131_%285105520329%29.jpg'},
+                    {name: 'Panther', description: 'Средний танк вермахта', price: '1 200 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Panzer_V_Panther_Ausf_G_%28Bovington%29.jpg/320px-Panzer_V_Panther_Ausf_G_%28Bovington%29.jpg'}
+                ],
+                'france': [
+                    {name: 'Leclerc', description: 'Основной боевой танк Франции', price: '6 000 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/AMX-56_Leclerc_%28cropped%29.jpg/320px-AMX-56_Leclerc_%28cropped%29.jpg'},
+                    {name: 'AMX-30', description: 'Основной боевой танк Франции 1960-х годов', price: '800 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/AMX-30B2_Brenus_%282019%29.jpg/320px-AMX-30B2_Brenus_%282019%29.jpg'},
+                    {name: 'Char B1', description: 'Французский тяжёлый танк 1930-х годов', price: '1 100 000 €', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Char_B1_bis_%28Saumur%29.jpg/320px-Char_B1_bis_%28Saumur%29.jpg'}
+                ],
+                'china': [
+                    {name: 'Type 99', description: 'Основной боевой танк Китая', price: '2 500 000 ¥', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Type_99_Main_Battle_Tank_20161002.jpg/320px-Type_99_Main_Battle_Tank_20161002.jpg'},
+                    {name: 'Type 96', description: 'Китайский основной боевой танк', price: '1 800 000 ¥', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Type_96_Main_Battle_Tank_20161002.jpg/320px-Type_96_Main_Battle_Tank_20161002.jpg'},
+                    {name: 'Type 59', description: 'Китайский средний танк', price: '600 000 ¥', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Type_59_Main_Battle_Tank_20161002.jpg/320px-Type_59_Main_Battle_Tank_20161002.jpg'}
+                ]
+            };
+
+            // Обработчик выбора страны
+            $('#nationSelect').change(function() {
+                const nation = $(this).val();
+                const tankSelect = $('#tankSelect');
+                const nationFlag = $('#nationFlag');
+
+                // Устанавливаем флаг страны
+                nationFlag.attr('src', flagsData[nation]).show();
+
+                // Очищаем и скрываем предыдущие выборы
+                tankSelect.empty().hide();
+                $('#tankInfo').hide();
+                $('#buyButton').hide();
+
+                // Добавляем опции для танков выбранной страны
+                tankSelect.append('<option selected disabled>Выберите танк</option>');
+                tanksData[nation].forEach((tank, index) => {
+                    tankSelect.append(`<option value="${index}">${tank.name}</option>`);
+                });
+
+                // Показываем выбор танка
+                tankSelect.show();
+            });
+
+            // Обработчик выбора танка
+            $('#tankSelect').change(function() {
+                const nation = $('#nationSelect').val();
+                const tankIndex = $(this).val();
+                const tank = tanksData[nation][tankIndex];
+
+                // Устанавливаем данные о танке
+                $('#tankName').text(tank.name);
+                $('#tankDescription').text(tank.description);
+                $('#tankPrice').text('Цена: ' + tank.price);
+                $('#tankImage').attr('src', tank.image);
+
+                // Показываем информацию и кнопку покупки
+                $('#tankInfo').show();
+                $('#buyButton').show();
+            });
+
+            // Обработчик кнопки покупки
+            $('#buyButton').click(function() {
+                const tankName = $('#tankName').text();
+                alert(`Поздравляем! Вы приобрели танк ${tankName}! Наш менеджер свяжется с вами для уточнения деталей доставки.`);
+            });
+        });
+    </script>
+</body>
+</html>

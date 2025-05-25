@@ -68,3 +68,6 @@ def frc(request):
 
 def ch(request):
     return render(request, 'polls/CH.html')
+
+def pokupka(request):
+    return render(request, 'polls/pokupka.html')
