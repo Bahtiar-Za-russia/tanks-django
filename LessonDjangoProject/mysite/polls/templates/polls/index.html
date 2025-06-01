@@ -9,49 +9,39 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <header class="container-fluid">
+    <header class="container">
         <div class="row">
             <div class="col logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToo3dRuPHHeTJclq4P8eXPgefWgwIXNC_dkQ&s" alt="404 Not Found">
+                <img src="https://old-wiki.warthunder.ru/images/thumb/3/32/%D0%A2-72%D0%91_%281989%29._%D0%A4%D0%BE%D1%82%D0%BE_3.jpg/240px-%D0%A2-72%D0%91_%281989%29._%D0%A4%D0%BE%D1%82%D0%BE_3.jpg  " alt="404 Not Found">
                 <h1>ООО Танковая Биржа</h1>
             </div>
             <div class="col-6 navbar">
-                <a class="nav-link" href="{% url 'polls:onas' %}">О нас</a>
-                <a class="nav-link" href="{% url 'polls:sponsor' %}">Спонсоры</a>
-                <a class="nav-link" href="{% url 'polls:register' %}">Зарегистрироватся</a>
-                <a class="nav-link" href="{% url 'polls:login' %}">Войти</a>
-                <a class="nav-link" href="{% url 'polls:pokupka' %}">Купить модель</a>
+                <a class="nav-link text-Gray" href="{% url 'polls:onas' %}">О нас</a>
+                <a class="nav-link text-Gray" href="{% url 'polls:sponsor' %}">Спонсоры</a>
+                <a class="nav-link text-Gray" href="{% url 'polls:register' %}">Зарегистрироватся</a>
+                <a class="nav-link text-Gray" href="{% url 'polls:login' %}">Войти</a>
+                <a class="nav-link text-Gray" href="{% url 'polls:pokupka' %}">Купить модель</a>
             </div>
         </div>
     </header>
- 
-    <!-- <header class="header">
-        <div class="overlay"></div>
-        <div class="container">
-            
-            
-        </div>
-    </header> -->
     <main>
         <section id="info">
-            <div class="conteiner">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
                         <div class="title">
                             <h2 class="title-header">Все модели танков</h2>
                             <p class="title-text">
                                 Какая страна?
                             </p>
                         </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="block d-flex">
-                            <img class="nav" href="{% url 'polls:seller' %}" src="https://storage.yandexcloud.net/moskvichmag/uploads/2022/06/flag1.png"alt="icon">
+                            <img class="nav" href="{% url 'polls:seller' %}" src="https://storage.yandexcloud.net/moskvichmag/uploads/2022/06/flag1.png" alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="{% url 'polls:seller' %}" role="button">СССР и России</a>
-                                <p class="block-text">Танки СССР или России</p>
+                                <a class="btn btn-link text-white" href="{% url 'polls:seller' %}" role="button">Русскосоветская</a>
+                                <p class="block-text text-white">Танки СССР или России</p>
                             </div>
                         </div>
                     </div>
@@ -59,8 +49,8 @@
                         <div class="block d-flex">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/250px-Flag_of_the_United_States.svg.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="{% url 'polls:usa' %}" role="button">USA</a>
-                                <p class="block-text">Танки Омерики</p>
+                                <a class="btn btn-link text-white" href="{% url 'polls:usa' %}" role="button">USA</a>
+                                <p class="block-text text-white">Танки Омерики</p>
                             </div>
                         </div>
                     </div>
@@ -68,8 +58,8 @@
                         <div class="block d-flex">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/250px-Flag_of_the_United_Kingdom_%283-5%29.svg.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="WB.html" role="button">The Greate Britain</a>
-                                <p class="block-text">Танки Великобритании</p>
+                                <a class="btn btn-link text-white" href="WB.html" role="button">Британия</a>
+                                <p class="block-text text-white">Танки Великобритании</p>
                             </div>
                         </div>
                     </div>
@@ -79,8 +69,8 @@
                         <div class="block d-flex">
                             <img class="nav" src="https://kupit-flag.ru/upload/iblock/6c6/6c6d5997e59a4ecf3c4d5de2ef858cc5.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="GER.html" role="button">Germany</a>
-                                <p class="block-text">Танки Германии</p>
+                                <a class="btn btn-link text-white" href="GER.html" role="button">Germany</a>
+                                <p class="block-text text-white">Танки Германии</p>
                             </div>
                         </div>
                     </div>
@@ -88,8 +78,8 @@
                         <div class="block d-flex">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/200px-Ensign_of_France.svg.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="FRC.html" role="button">Francia</a>
-                                <p class="block-text">Танки Франции</p>
+                                <a class="btn btn-link text-white" href="FRC.html" role="button">Francia</a>
+                                <p class="block-text text-white">Танки Франции</p>
                             </div>
                         </div>
                     </div>
@@ -97,8 +87,8 @@
                         <div class="block d-flex">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/800px-Flag_of_the_People%27s_Republic_of_China.svg.png"alt="icon">
                             <div class="block-body">
-                                <a class="btn btn-link" href="CH.html" role="button">CHINA</a>
-                                <p class="block-text">Танки Китая</p>
+                                <a class="btn btn-link text-white" href="CH.html" role="button">CHINA</a>
+                                <p class="block-text text-white">Танки Китая</p>
                             </div>
                         </div>
                     </div>

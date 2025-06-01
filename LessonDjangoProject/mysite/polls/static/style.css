@@ -4,15 +4,14 @@
 img{
     width: 100px;
     height: 100px;
+    margin-left:10px;
 }
 
-
-
 .overlay {
-    position: absolute;
+    height: 100%;
     min-height: 100%;
     min-width: 100%;
-    background: rgba(220, 220, 220, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .logo{
@@ -40,14 +39,12 @@ body{
     background-image: url('https://staticfiles.warthunder.com/upload/image/!2024/12/upd/24_12_12_update_2.43/art_int/news_storm_warning_pzh_2000_5f0ca27a2ddaf97dabf8615bf7a365da.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    color:rgba(255, 255, 255, 0.92);
-
 }
 main{
     margin-top:5%;
 }      
 .title{
-    margin-bottom: 15%;
+    /* margin-bottom: 15%; */
 }
 .block{
     margin-bottom: 5%;
@@ -116,14 +113,13 @@ main{
 
 .btn{
     font-size: 200%;
-    
+
 }
 
 .btn-link{
     font-size: 200%;
-    
+    --bs-btn-color: wright;
 }
-
 .container {
     text-align: center;
 }
@@ -142,7 +138,7 @@ select {
 }
 
 p {
- color: black;
+ color: wright;
 }
 
         .purchase-container {
@@ -184,3 +180,7 @@ p {
             border-radius: 5px;
             display: none;
         }
+
+.block-body {
+    text-indent: -15px;
+}
